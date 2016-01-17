@@ -4703,16 +4703,6 @@ public final class Settings {
                 ANY_INTEGER_VALIDATOR;
 
         /**
-         * @hide
-         */
-        public static final String TORCH_LONG_PRESS_POWER_GESTURE = "torch_long_press_power_gesture";
-
-        /**
-         * @hide
-         */
-        public static final String TORCH_LONG_PRESS_POWER_TIMEOUT = "torch_long_press_power_timeout";
-
-        /**
          * Change fonts for the system lockscreen date
          *
          * @hide
@@ -4739,6 +4729,25 @@ public final class Settings {
          * @hide
          */
         public static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
+
+        /**
+          * Volume keys control cursor in text fields (default is 0)
+          * 0 - Disabled
+          * 1 - Volume up/down moves cursor left/right
+          * 2 - Volume up/down moves cursor right/left
+          * @hide
+          */
+        public static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+
+        /**
+         * @hide
+         */
+        public static final String TORCH_LONG_PRESS_POWER_GESTURE = "torch_long_press_power_gesture";
+
+        /**
+         * @hide
+         */
+        public static final String TORCH_LONG_PRESS_POWER_TIMEOUT = "torch_long_press_power_timeout";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings

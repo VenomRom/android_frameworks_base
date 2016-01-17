@@ -893,8 +893,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private static final int MSG_POWER_VERY_LONG_PRESS = 28;
     private static final int MSG_NOTIFY_USER_ACTIVITY = 29;
     private static final int MSG_RINGER_TOGGLE_CHORD = 30;
-    private static final int MSG_TOGGLE_TORCH = 31;
-    private static final int MSG_DISPATCH_VOLKEY_WITH_WAKE_LOCK = 32;
+    private static final int MSG_DISPATCH_VOLKEY_WITH_WAKE_LOCK = 31;
+    private static final int MSG_TOGGLE_TORCH = 32;
 
     private static final int MSG_REQUEST_TRANSIENT_BARS_ARG_STATUS = 0;
     private static final int MSG_REQUEST_TRANSIENT_BARS_ARG_NAVIGATION = 1;
@@ -905,7 +905,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private boolean mTorchEnabled;
     private int mTorchTimeout;
     private PendingIntent mTorchOffPendingIntent;
-
     private boolean mClearedBecauseOfForceShow;
     private boolean mTopWindowIsKeyguard;
 
@@ -1123,6 +1122,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.VOLUME_BUTTON_MUSIC_CONTROL), false, this,
                     UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.TORCH_LONG_PRESS_POWER_GESTURE), false, this,
+                    UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.TORCH_LONG_PRESS_POWER_TIMEOUT), false, this,
+                    UserHandle.USER_ALL);
+
             updateSettings();
         }
 
@@ -1719,7 +1725,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void powerLongPress() {
-        int behavior = getResolvedLongPressOnPowerBehavior();
+        int behavior = mResolvedLongPressOnPowerBehavior;
         switch (behavior) {
         case LONG_PRESS_POWER_NOTHING:
             break;
@@ -2505,7 +2511,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 }
             }
         }
-
 
         // Register for torch off events
         BroadcastReceiver torchReceiver = new BroadcastReceiver() {
