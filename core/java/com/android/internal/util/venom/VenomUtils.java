@@ -21,7 +21,10 @@ package com.android.internal.util.venom;
 import android.view.IWindowManager;
 import android.app.ActivityManager;
 import android.Manifest;
-import android.app.AlertDialog; 
+import android.app.AlertDialog;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.app.IActivityManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,13 +36,10 @@ import android.net.ConnectivityManager;
 import java.util.List;
 import java.util.Locale;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.hardware.input.InputManager;
 import android.hardware.fingerprint.FingerprintManager;
@@ -164,6 +164,27 @@ public class VenomUtils {
     public static boolean deviceSupportNavigationBar(Context context) {
         return deviceSupportNavigationBarForUser(context, UserHandle.USER_CURRENT);
     }
+
+    // Check to see if a package is installed
+    public static boolean isPackageInstalled(Context context, String pkg, boolean ignoreState) {
+        if (pkg != null) {
+            try {
+                PackageInfo pi = context.getPackageManager().getPackageInfo(pkg, 0);
+                if (!pi.applicationInfo.enabled && !ignoreState) {
+                    return false;
+                }
+            } catch (NameNotFoundException e) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean isPackageInstalled(Context context, String pkg) {
+        return isPackageInstalled(context, pkg, true);
+    }
+
 
     public static void restartSystemUi(Context context) {
         new RestartSystemUiTask(context).execute();
