@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  
-   Copyright (C) 2018 Syberia Project
    Copyright (C) 2018 The Superior OS Project
 
   This program is free software: you can redistribute it and/or modify
@@ -18,15 +17,9 @@
  -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Height of the status bar header bar -->
-    <dimen name="status_bar_header_height">130dp</dimen>
 
-    <dimen name="screenrecord_hint_size">48dp</dimen>
+    <!-- Burn in protection -->
+    <bool name="config_statusBarBurnInProtection">false</bool>
+    <integer name="config_shift_interval">60</integer>
 	
-    <!-- Sets a custom extra padding for the QS icons and statusbar date -->
-	<dimen name="qs_items_padding">8dp</dimen>
-	
-	<!-- Burn-in protection -->
-    <dimen name="horizontal_max_swift">3.0dp</dimen>
-    <dimen name="vertical_max_swift">1.0dp</dimen>
 </resources>
