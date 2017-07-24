@@ -17,5 +17,5 @@ oding="utf-8"?>
 
      <!-- Resolver -->
     <color name="resolver_list_bg">@android:color/white</color>
- </resources>
->>>>>>> b401902738c... Expose resolver hardcoded colors
+
+</resources>
