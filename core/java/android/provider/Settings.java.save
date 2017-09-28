@@ -4160,20 +4160,10 @@ public final class Settings {
          public static final String SCREENSHOT_SHUTTER_SOUND = "screenshot_shutter_sound";
 
         /**
-<<<<<<< HEAD
-         * @hide
-         */
-        public static final String OMNI_NAVIGATION_BAR_SHOW = "navigation_bar_show";
-
-         /** @hide */
-        private static final Validator OMNI_NAVIGATION_BAR_SHOW_VALIDATOR =
-                BOOLEAN_VALIDATOR;
-=======
          * Whether to show the battery info on the lockscreen while charging
          * @hide
          */
         public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
->>>>>>> d158c192baf... LockscreenCharging: squashed (1/3)
 
         /**
          * Whether the phone vibrates on call connect
@@ -4303,49 +4293,21 @@ public final class Settings {
         public static final String POWERMENU_REBOOT = "powermenu_reboot";
 
         /**
-         * Whether to display the power menu advanced reboot option on a secured lockscreen
-         *
-         * @hide
-         */
-        public static final String POWERMENU_LS_ADVANCED_REBOOT = "powermenu_ls_advanced_reboot";
-
-        /**
-         * Whether to display the power menu screenshot option on a secured lockscreen
-         *
-         * @hide
-         */
-        public static final String POWERMENU_LS_SCREENSHOT = "powermenu_ls_screenshot";
-
-        /**
-         * Whether to display the power menu airplane mode option on a secured lockscreen
-         *
-         * @hide
-         */
-        public static final String POWERMENU_LS_AIRPLANE = "powermenu_ls_airplane";
-
-        /**
-         * Whether to display the power menu reboot option on a secured lockscreen
-         *
-         * @hide
-         */
-        public static final String POWERMENU_LS_REBOOT = "powermenu_ls_reboot";
-
-        /**
-         * Whether to display the advanced reboot option on the power menu
+         * Whether to display the advanced reboot option in the power menu
          *
          * @hide
          */
         public static final String POWERMENU_ADVANCED_REBOOT = "powermenu_advanced_reboot";
 
         /**
-         * Whether to display the screenshot option on the power menu
+         * Whether to display the screenshot option in the power menu
          *
          * @hide
          */
         public static final String POWERMENU_SCREENSHOT = "powermenu_screenshot";
 
         /**
-         * Whether to display the airplane option on the power menu
+         * Whether to display the airplane option in the power menu
          *
          * @hide
          */
@@ -4950,7 +4912,9 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_QS_LAYOUT_ROWS_LANDSCAPE);
             PRIVATE_SETTINGS.add(OMNI_QS_QUICKBAR_COLUMNS);
             PRIVATE_SETTINGS.add(OMNI_QS_PANEL_BG_ALPHA);
+=======
             PRIVATE_SETTINGS.add(STATUS_BAR_BRIGHTNESS_CONTROL);
+>>>>>>> 5dca175... SystemUI: Port forward statusbar brightness control [1/2]
         }
 
         /**
@@ -11280,15 +11244,6 @@ public final class Settings {
          * @see com.android.server.am.ActivityManagerConstants
          */
         public static final String ACTIVITY_MANAGER_CONSTANTS = "activity_manager_constants";
-
-        /**
-         * Feature flag to enable or disable the activity starts logging feature.
-         * Type: int (0 for false, 1 for true)
-         * Default: 0
-         * @hide
-         */
-        public static final String ACTIVITY_STARTS_LOGGING_ENABLED
-                = "activity_starts_logging_enabled";
 
         /**
          * App ops specific settings.
