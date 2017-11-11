@@ -47,9 +47,8 @@
   <java-symbol type="anim" name="custom_app_out" />
   <java-symbol type="integer" name="config_deviceHardwareKeys" />
 
-  <java-symbol type="bool" name="config_intrusiveBatteryLed" />
-  <java-symbol type="bool" name="config_multiColorBatteryLed" />
-  <java-symbol type="bool" name="config_ledCanPulse" />
+<!-- Whether device supports an alt. ambient display -->
+  <java-symbol type="bool" name="config_alt_ambient_display"/>
   
   <!-- Notification info -->
   <java-symbol type="color" name="notification_info_button_text" />

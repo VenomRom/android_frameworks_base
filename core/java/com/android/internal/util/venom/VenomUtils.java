@@ -19,7 +19,9 @@ package com.android.internal.util.venom;
 
 import android.view.IWindowManager;
 import android.app.ActivityManager;
+import android.Manifest;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.Intent;
 import android.view.IWindowManager;
 import android.view.WindowManagerGlobal;
@@ -36,6 +38,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.hardware.input.InputManager;
+import android.hardware.fingerprint.FingerprintManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
@@ -52,6 +55,8 @@ import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.os.SystemProperties;
+import android.net.NetworkInfo;
+import com.android.internal.R;
 
 import java.util.List;
 
@@ -70,6 +75,79 @@ public class VenomUtils {
         if (pm!= null) {
             pm.goToSleep(SystemClock.uptimeMillis());
         }
+    }
+
+    public static boolean isWifiOnly(Context context) {
+        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(
+                Context.CONNECTIVITY_SERVICE);
+        return (cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE) == false);
+    }
+
+    // Check to see if Wifi is connected
+    public static boolean isWifiConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = null;
+        if (cm != null) {
+            activeNetwork = cm.getActiveNetworkInfo();
+        }
+        NetworkInfo wifi = null;
+        if (cm != null) {
+            wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        }
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting() && wifi.isConnected();
+    }
+
+    // Check to see if Mobile data is connected
+    public static boolean isMobileConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = null;
+        if (cm != null) {
+            activeNetwork = cm.getActiveNetworkInfo();
+        }
+        NetworkInfo mobile = null;
+        if (cm != null) {
+            mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        }
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting() && mobile.isConnected();
+    }
+
+    // Check to see if device supports the Fingerprint scanner
+    public static boolean hasFingerprintSupport(Context context) {
+        FingerprintManager fingerprintManager = (FingerprintManager) context.getSystemService(Context.FINGERPRINT_SERVICE);
+        return context.getApplicationContext().checkSelfPermission(Manifest.permission.USE_FINGERPRINT) == PackageManager.PERMISSION_GRANTED &&
+                (fingerprintManager != null && fingerprintManager.isHardwareDetected());
+    }
+
+    // Check to see if device not only supports the Fingerprint scanner but also if is enrolled
+    public static boolean hasFingerprintEnrolled(Context context) {
+        FingerprintManager fingerprintManager = (FingerprintManager) context.getSystemService(Context.FINGERPRINT_SERVICE);
+        return context.getApplicationContext().checkSelfPermission(Manifest.permission.USE_FINGERPRINT) == PackageManager.PERMISSION_GRANTED &&
+                (fingerprintManager != null && fingerprintManager.isHardwareDetected() && fingerprintManager.hasEnrolledFingerprints());
+    }
+
+    // Check to see if device has a camera
+    public static boolean hasCamera(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
+    }
+
+    // Check to see if device supports NFC
+    public static boolean hasNFC(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_NFC);
+    }
+
+    // Check to see if device supports Wifi
+    public static boolean hasWiFi(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI);
+    }
+
+    // Check to see if device supports Bluetooth
+    public static boolean hasBluetooth(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH);
+    }
+
+    // Check to see if device supports an alterative ambient display package
+    public static boolean hasAltAmbientDisplay(Context context) {
+        return context.getResources().getBoolean(com.android.internal.R.bool.config_alt_ambient_display);
     }
 
     public static boolean deviceHasFlashlight(Context ctx) {
