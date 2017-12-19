@@ -19,6 +19,7 @@ package com.android.internal.util.superior;
 
 import android.view.IWindowManager;
 import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.view.IWindowManager;
 import android.view.WindowManagerGlobal;
@@ -31,6 +32,9 @@ import android.content.res.Resources;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.hardware.input.InputManager;
 import android.os.Handler;
 import android.os.Looper;
@@ -43,10 +47,13 @@ import android.view.InputDevice;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.net.ConnectivityManager;
+
 import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.os.SystemProperties;
+
+import java.util.List;
 
 import com.android.internal.statusbar.IStatusBarService;
 
@@ -155,5 +162,21 @@ public class SuperiorUtils {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ActivityInfo getRunningActivityInfo(Context context) {
+        final ActivityManager am = (ActivityManager) context
+                .getSystemService(Context.ACTIVITY_SERVICE);
+        final PackageManager pm = context.getPackageManager();
+
+        List<ActivityManager.RunningTaskInfo> tasks = am.getRunningTasks(1);
+        if (tasks != null && !tasks.isEmpty()) {
+            ActivityManager.RunningTaskInfo top = tasks.get(0);
+            try {
+                return pm.getActivityInfo(top.topActivity, 0);
+            } catch (PackageManager.NameNotFoundException e) {
+            }
+        }
+        return null;
     }
 }
