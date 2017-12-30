@@ -164,6 +164,7 @@ import android.app.ActivityManagerInternal.SleepToken;
 import android.app.ActivityThread;
 import android.app.AlarmManager;
 import android.app.AppOpsManager;
+import android.app.KeyguardManager;
 import android.app.IUiModeManager;
 import android.app.PendingIntent;
 import android.app.KeyguardManager;
