@@ -166,6 +166,7 @@ import android.app.AlarmManager;
 import android.app.AppOpsManager;
 import android.app.IUiModeManager;
 import android.app.PendingIntent;
+import android.app.KeyguardManager;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.app.StatusBarManager;
@@ -1701,7 +1702,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void powerLongPress() {
-        final int behavior = mResolvedLongPressOnPowerBehavior;
+        int behavior = getResolvedLongPressOnPowerBehavior();
         switch (behavior) {
         case LONG_PRESS_POWER_NOTHING:
             break;
