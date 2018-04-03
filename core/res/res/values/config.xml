@@ -2691,6 +2691,9 @@
     <!-- Flag indicating which package name can access the persistent data partition -->
     <string name="config_persistentDataPackageName" translatable="false"></string>
 
+    <!--  Define optional package verifier name -->
+    <string name="config_optionalPackageVerifierName" translatable="false"></string>
+
     <!-- Flag indicating apps will skip sending hold request before merge. In this case
         IMS service implementation will do both.i.e.hold followed by merge. -->
     <bool name="skipHoldBeforeMerge">true</bool>
@@ -3506,17 +3509,9 @@
     <!-- Whether or not swipe up gesture's opt-in setting is available on this device -->
     <bool name="config_swipe_up_gesture_setting_available">true</bool>
 
-    <!-- Applications which are disabled unless matching a particular sku -->
-    <string-array name="config_disableApksUnlessMatchedSku_apk_list" translatable="false" />
-    <string-array name="config_disableApkUnlessMatchedSku_skus_list" translatable="false" />
+    <!-- The duration (in milliseconds) for the outgoing sms authorization request to timeout.-->
+    <integer name="config_sms_authorization_timeout_ms">0</integer>
 
-    <!-- Whether or not we should show the option to show battery percentage -->
-    <bool name="config_battery_percentage_setting_available">true</bool>
-
-    <!-- Model of potentially misprovisioned devices. If none is specified in an overlay, an
-         empty string is passed in. -->
-    <string name="config_misprovisionedDeviceModel" translatable="false"></string>
-
-    <!-- Brand value for attestation of misprovisioned device. -->
-    <string name="config_misprovisionedBrandValue" translatable="false"></string>
+    <!-- Enable sms authorization framework-->
+    <bool name="config_sms_authorization_enabled">false</bool>
 </resources>
