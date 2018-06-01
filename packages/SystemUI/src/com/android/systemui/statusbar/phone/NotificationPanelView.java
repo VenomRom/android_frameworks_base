@@ -1202,6 +1202,7 @@ public class NotificationPanelView extends PanelView implements
             }
         }
         if (keyguardShowing) {
+            mQsExpandImmediate = false;
             updateDozingVisibilities(false /* animate */);
         }
         resetVerticalPanelPosition();
