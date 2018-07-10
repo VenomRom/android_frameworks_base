@@ -53,6 +53,7 @@ import com.android.systemui.tuner.TunerService;
 import com.android.systemui.tuner.TunerService.Tunable;
 import com.android.systemui.util.Utils.DisableStateTracker;
 import android.provider.Settings;
+>>>>>>> 5664f54... SystemUI: show/hide data activity arrows
 
 import java.util.ArrayList;
 import java.util.List;

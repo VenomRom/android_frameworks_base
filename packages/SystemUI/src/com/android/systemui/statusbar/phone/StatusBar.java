@@ -403,6 +403,9 @@ public class StatusBar extends SystemUI implements DemoMode,
     // settings
     private QSPanel mQSPanel;
 
+    // Data activity arrows
+    private boolean mShowDataAct;
+
     // top bar
     private KeyguardStatusBarView mKeyguardStatusBar;
     private boolean mLeaveOpenOnKeyguardHide;
@@ -5072,6 +5075,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SHOW_DATA_ACTIVITY),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -5097,7 +5103,15 @@ public class StatusBar extends SystemUI implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(
                 Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN))) {
                 setStatusBarWindowViewOptions();
-            } 
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.SHOW_DATA_ACTIVITY))) {
+                    mShowDataAct = Settings.System.getIntForUser(
+                            mContext.getContentResolver(),
+                            Settings.System.SHOW_DATA_ACTIVITY,
+                            0, UserHandle.USER_CURRENT) == 1;
+                            mCommandQueue.restartUI();
+                            updateEmptyShadeView();
+	   }
             update();
         }
 

@@ -4219,6 +4219,12 @@ public final class Settings {
          */
         public static final String QS_COLUMNS_PORTRAIT = "qs_columns_portrait";
 
+	/**
+         * Show data activity arrows
+         * @hide
+         */
+        public static final String SHOW_DATA_ACTIVITY = "show_data_activity";
+
         /**
          * How many columns to show in the qs panel when in landscape
          * @hide
