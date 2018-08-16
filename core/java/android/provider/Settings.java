@@ -4330,6 +4330,15 @@ public final class Settings {
         public static final String HEADS_UP_NOTIFICATION_SNOOZE = "heads_up_notification_snooze";
 
         /**
+         * @hide
+         */
+        public static final String OMNI_NAVIGATION_BAR_SHOW = "navigation_bar_show";
+
+         /** @hide */
+        private static final Validator OMNI_NAVIGATION_BAR_SHOW_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4508,6 +4517,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_ROWS_LANDSCAPE);
             PRIVATE_SETTINGS.add(QS_COLUMNS_PORTRAIT);
             PRIVATE_SETTINGS.add(QS_COLUMNS_LANDSCAPE);
+            PRIVATE_SETTINGS.add(OMNI_NAVIGATION_BAR_SHOW);
         }
 
         /**

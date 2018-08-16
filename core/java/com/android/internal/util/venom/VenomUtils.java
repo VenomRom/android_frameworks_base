@@ -47,7 +47,10 @@ import android.view.InputDevice;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.net.ConnectivityManager;
-
+import android.os.Handler;
+import android.os.UserHandle;
+import android.provider.Settings;
+import android.os.SystemProperties;
 
 import com.android.internal.statusbar.IStatusBarService;
 

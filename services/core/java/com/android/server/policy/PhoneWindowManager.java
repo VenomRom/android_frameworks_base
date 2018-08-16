@@ -1050,6 +1050,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.ALLOW_INCALL_HOME), false, this,
                     UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.OMNI_NAVIGATION_BAR_SHOW), false, this,
+                    UserHandle.USER_ALL);
             updateSettings();
         }
 
@@ -2586,10 +2589,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mIncallHomeBehavior = (Settings.System.getIntForUser(resolver,
                     Settings.System.ALLOW_INCALL_HOME, 1, UserHandle.USER_CURRENT) == 1);
 
-<<<<<<< HEAD
-            mHasNavigationBar = SuperiorUtils.deviceSupportNavigationBar(mContext);
-=======
->>>>>>> 41a46073ccb... Allow to disable HOME key when ringing [1/2]
+            mHasNavigationBar = VenomUtils.deviceSupportNavigationBar(mContext);
+
         }
         synchronized (mWindowManagerFuncs.getWindowManagerLock()) {
             PolicyControl.reloadFromSetting(mContext);
