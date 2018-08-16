@@ -4143,6 +4143,7 @@ public final class Settings {
          public static final String SCREENSHOT_SHUTTER_SOUND = "screenshot_shutter_sound";
 
         /**
+<<<<<<< HEAD
          * @hide
          */
         public static final String OMNI_NAVIGATION_BAR_SHOW = "navigation_bar_show";
@@ -4150,6 +4151,12 @@ public final class Settings {
          /** @hide */
         private static final Validator OMNI_NAVIGATION_BAR_SHOW_VALIDATOR =
                 BOOLEAN_VALIDATOR;
+=======
+         * Whether to show the battery info on the lockscreen while charging
+         * @hide
+         */
+        public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
+>>>>>>> d158c192baf... LockscreenCharging: squashed (1/3)
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
