@@ -965,8 +965,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                             android.Manifest.permission.USER_ACTIVITY);
                 case MSG_RINGER_TOGGLE_CHORD:
                     handleRingerChordGesture();
-                    break;
-                }
+                    break;                
                 case HardkeyActionHandler.MSG_FIRE_HOME:
                     launchHomeFromHotKey();
                     break;
@@ -9061,5 +9060,5 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             return true;
         }
         return false;
-    }
+    } 
 }
