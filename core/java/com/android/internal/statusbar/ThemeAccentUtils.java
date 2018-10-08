@@ -77,10 +77,7 @@ public class ThemeAccentUtils {
 
     // Switches theme accent from to another or back to stock
     public static void updateAccents(IOverlayManager om, int userId, int accentSetting) {
-        if (accentSetting == 0) {
-            unloadAccents(om, userId);
-            }
-        } else if (accentSetting < 25) {
+         if (accentSetting < 25) {
             try {
                 om.setEnabled(ACCENTS[accentSetting],
                         true, userId);
