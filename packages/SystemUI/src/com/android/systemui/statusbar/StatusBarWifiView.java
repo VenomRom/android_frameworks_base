@@ -218,8 +218,7 @@ public class StatusBarWifiView extends FrameLayout implements DarkReceiver,
 
         mIn.setVisibility(state.activityIn ? View.VISIBLE : View.GONE);
         mOut.setVisibility(state.activityOut ? View.VISIBLE : View.GONE);
-        mInoutContainer.setVisibility(
-                (state.activityIn || state.activityOut) ? View.VISIBLE : View.GONE);
+        mInoutContainer.setVisibility(View.GONE);
         mAirplaneSpacer.setVisibility(state.airplaneSpacerVisible ? View.VISIBLE : View.GONE);
         mSignalSpacer.setVisibility(state.signalSpacerVisible ? View.VISIBLE : View.GONE);
         if (mState.visible != state.visible) {
