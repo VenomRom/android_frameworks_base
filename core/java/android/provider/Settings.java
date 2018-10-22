@@ -4483,6 +4483,12 @@ public final class Settings {
         public static final String HEADS_UP_NOTIFICATION_SNOOZE = "heads_up_notification_snooze";
 
         /**
+         * Whether to show VoLTE icon or not
+         * @hide
+         */
+        public static final String SHOW_VOLTE_ICON = "volte_icon";
+
+        /**
          * @hide
          */
         public static final String OMNI_NAVIGATION_BAR_SHOW = "navigation_bar_show";
