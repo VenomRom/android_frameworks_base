@@ -480,7 +480,7 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
             }
         }
     }
-
+    @Override
     public void toggleRecentApps() {
         enforceStatusBarService();
 
