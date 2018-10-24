@@ -50,7 +50,7 @@ public class Build {
     /**
      * @hide
      */
-    public static final String SUPERIOR_DISPLAY_VERSION = getString("ro.superior.display.version");
+    public static final String VENOM_DISPLAY_VERSION = getString("ro.venom.display.version");
 
     /** The name of the overall product. */
     public static final String PRODUCT = getString("ro.product.name");
