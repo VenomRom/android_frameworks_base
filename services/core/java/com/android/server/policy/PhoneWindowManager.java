@@ -1653,6 +1653,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             break;
         case LONG_PRESS_POWER_GLOBAL_ACTIONS:
             mPowerKeyHandled = true;
+            performHapticFeedbackLw(null, HapticFeedbackConstants.LONG_PRESS, false);
             KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
             boolean locked = km.inKeyguardRestrictedInputMode();
             boolean globalActionsOnLockScreen = Settings.System.getInt(
