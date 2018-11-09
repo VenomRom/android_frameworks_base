@@ -6435,6 +6435,6 @@ message MetricsEvent {
     // END OF AOSP CONSTANTS
    
     // Venom constant
-    VENOM = 1500;
+    VENOM = 1502;
   }
 }
